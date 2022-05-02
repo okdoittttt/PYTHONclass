@@ -8,4 +8,3 @@ t.setup(swidth + 50, sheight + 50)
 t.screensize(swidth, sheight)
 
 str = tk.simpledialog.asking('input char', 'input for turtle')
-t.
