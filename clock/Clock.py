@@ -5,6 +5,7 @@ from time import strftime
 
 root = Tk()
 root.title("Clock")
+root.geometry("400x400+400+0")
 
 def time():
     string = strftime('%H:%M:%S %P')
