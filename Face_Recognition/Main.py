@@ -50,7 +50,7 @@ def imgDetector(img, cascade):
     cv2.waitKey(10000)
 
 # 영상탐지
-# videoDetector(cam, cascade)
+videoDetector(cam, cascade)
 
 # 사진탐지
-imgDetector(cam, cascade)
+# imgDetector(cam, cascade)
