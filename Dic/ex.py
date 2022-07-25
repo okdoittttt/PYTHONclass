@@ -3,7 +3,7 @@ import numpy as np
 import face_recognition
 
 # Elon musk 이미지를 test와 원본을 저장.
-imgElon = face_recognition.load_image_file("examples/son.jpg")
+imgElon = face_recognition.load_image_file("examples/elon.jpg")
 imgElon = cv2.cvtColor(imgElon,cv2.COLOR_BGR2RGB)
 imgTest = face_recognition.load_image_file("examples/elon_test.jpg")
 imgTest = cv2.cvtColor(imgTest,cv2.COLOR_BGR2RGB)
@@ -30,3 +30,5 @@ cv2.putText(imgTest, f'{results} {round(faceDis[0], 2)}', (50,50), cv2.FONT_HERS
 cv2.imshow('Elon Musk', imgElon)
 cv2.imshow('Elon Test', imgTest)
 cv2.waitKey(0)
+
+

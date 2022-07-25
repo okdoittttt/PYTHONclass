@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase Test</title>
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js"></script>
+
+    <script>
+        var firebaseConfig = {
+              apiKey: "AIzaSyBETK45cbP1g2ZYC03ras5UYys5fXAqV_4",
+              authDomain: "fir-course-edb8c.firebaseapp.com",
+              databaseURL: "https://fir-course-edb8c-default-rtdb.firebaseio.com/",
+              projectId: "fir-course-edb8c",
+              storageBucket: "fir-course-edb8c.appspot.com",
+              messagingSenderId: "760960563313",
+              appId: "1:760960563313:web:eb3b145202888f8a3c83d0",
+              measurementId: "G-336MJ5MK72"
+            };
+    </script>
+    <h1>Firebase Test</h1>
+    <form class="container" id="contactForm">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">
+                        Enter Your Name
+                    </label>
+
+                    <input type="text" class="form-control"
+                    id="name" placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">
+                        Email address
+                    </label>
+
+                    <input type="email" class="form-control"
+                    id="email" placeholder="name@example.com">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary"
+                style="margin-left: 15px; margin-top: 10px">
+                Submit
+            </button>
+        </div>
+    </form>
+    <script>
+
+    // <!--        TEST-->
+    firebase.initializeApp(firebaseConfig);
+
+    var database = firebase.database();
+
+    function writeUserData(value) {
+        firebase.database().ref('users/').set(value);
+    }
+    firebase.initializeApp(firebaseConfig);
+
+    var messagesRef = firebase.database()
+        .ref('Collected Data');
+
+    document.getElementById('contactForm')
+        .addEventListener('submit', submitForm);
+
+    function submitForm(e) {
+        e.preventDefault();
+
+        // Get values
+        var name = getInputVal('name');
+        var email = getInputVal('email');
+
+        saveMessage(name, email);
+        document.getElementById('contactForm').reset();
+    }
+
+    // Function to get get form values
+    function getInputVal(id) {
+        return document.getElementById(id).value;
+    }
+
+    // Save message to firebase
+    function saveMessage(name, email) {
+        var newMessageRef = messagesRef.push();
+        newMessageRef.set({
+            name: name,
+            email: email,
+        });
+    }
+    // <!--        TEST-->
+    </script>
+</body>
+</html>

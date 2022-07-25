@@ -1,4 +1,6 @@
 from flask import Flask
+import cv2
+import face_recognition
 import random
 
 # Flask는 기본적으로 5000번 포트에서 실행된다.
@@ -50,3 +52,4 @@ def read(id):
 
 app.run(debug=True)
 # port 변경하는 방법 -> app.run(port=5001)
+
