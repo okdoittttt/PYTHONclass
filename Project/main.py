@@ -3,6 +3,7 @@ import face_recognition
 import os
 import numpy as np
 from datetime import datetime
+import time
 import pickle
 # import RPi.GPIO as GPIO
 
@@ -96,14 +97,18 @@ while True:
             cv2.rectangle(img, (x1, y2 - 35), (x2, y2), (0,0,255), cv2.FILLED)
             cv2.putText(img, name, (x1 + 6, y2 - 5), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2)
             capImg = cv2.imwrite('unknown.jpg', img)
-            test = 'unknown.jpg'
+            unknownImg = 'unknown.jpg'
             db.set(name)
             # storage.img_insert(str(datetime.datetime.now()))
             print(name)
 
             # Send message to Telegram if face authentication fails
-            tele.sendImg(test)
+            tele.sendImg(unknownImg)
             tele.sendMessege()
+
+            # delay 5Sec
+            # time.sleep(5)
+    img = cv2.resize(img, (400, 300))
     cv2.imshow('webcam', img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
